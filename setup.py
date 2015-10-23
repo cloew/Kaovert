@@ -5,5 +5,7 @@ setup(name='kaovert',
       description="",
       author='',
       author_email='',
-      packages=['kaovert'],
+      packages=['kaovert',
+                'kaovert.commands'],
+      scripts=['kaovert/scripts/kaovert']
      )
