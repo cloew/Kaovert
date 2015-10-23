@@ -58,3 +58,6 @@ target/
 
 # PBF
 .pbf-properties
+
+# CLI
+main.py
