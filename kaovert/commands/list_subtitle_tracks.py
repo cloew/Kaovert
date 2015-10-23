@@ -1,5 +1,5 @@
+from ..mkv_wrapper import MkvWrapper
 from kao_command.args import Arg
-import enzyme
 
 class ListSubtitleTracks:
     """ Represents a command to list the Subtitle Tracks for a file """
@@ -8,8 +8,7 @@ class ListSubtitleTracks:
         
     def run(self, *, filename):
         """ Run the command """
-        with open(filename, 'rb') as f:
-            mkv = enzyme.MKV(f)
+        mkv = MkvWrapper.open(filename)
             
         for i, track in enumerate(mkv.subtitle_tracks):
             print("{0}: {1}".format(i+1, track.language))
