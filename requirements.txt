@@ -2,4 +2,5 @@ enzyme==0.4.1
 git+git://github.com/cloew/KaoDecorators.git
 git+git://github.com/cloew/KaoModules.git
 git+git://github.com/cloew/KaoCommand.git
+git+git://github.com/cloew/KaoToml.git
 wheel==0.24.0
