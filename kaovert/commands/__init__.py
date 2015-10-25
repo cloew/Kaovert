@@ -4,4 +4,5 @@ commands = Commands(__name__, {'audio':'list_audio_tracks.ListAudioTracks',
                                'subtitles':'list_subtitle_tracks.ListSubtitleTracks',
                                'config':'new_config.NewConfig',
                                'convert':'convert.Convert',
-                               'preview':'preview.Preview'})
+                               'preview':'preview.Preview',
+                               'add':{'audio':'add_audio.AddAudio'}})
