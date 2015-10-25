@@ -1,10 +1,12 @@
 from enum import Enum
 
+from .audio import Audio
 from .output_location import OutputLocation
 from .stop_at import StopAt
 
 class HandBrakeClis(Enum):
     """ Represents the various potential command line arguments """
+    Audio = Audio()
     OutputLocation = OutputLocation()
     StopAt = StopAt()
     
