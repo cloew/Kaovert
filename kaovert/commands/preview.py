@@ -14,5 +14,4 @@ class Preview:
         """ Run the command """
         config.stopAt = "duration:{0}".format(duration)
         converter = Converter(config)
-        
         converter.run(filenames)

@@ -12,5 +12,4 @@ class Convert:
     def run(self, *, filenames, config):
         """ Run the command """
         converter = Converter(config)
-        
         converter.run(filenames)
