@@ -11,8 +11,13 @@ class ConversionConfig:
         
     @property
     def output(self):
-        """ Return the output if its specified in the TOML file """
+        """ Return the output if it is specified in the TOML file """
         return self._toml.output if 'output' in self._toml else None
+        
+    @property
+    def stopAt(self):
+        """ Return the stopAt if it is specified in the TOML file """
+        return self._toml.stopAt if 'stopAt' in self._toml else None
         
     @lazy_property
     def _toml(self):
