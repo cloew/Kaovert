@@ -17,5 +17,6 @@ class Converter:
                 if cliArg.check(filename, self.config):
                     args.extend(cliArg.build(filename, self.config))
                     
+            print(" ".join(args))
             call(args)
             
