@@ -7,6 +7,8 @@ setup(name='kaovert',
       author_email='',
       packages=['kaovert',
                 'kaovert.commands',
-                'kaovert.config'],
+                'kaovert.config',
+                'kaovert.conversion',
+                'kaovert.conversion.hbclis'],
       scripts=['kaovert/scripts/kaovert']
      )

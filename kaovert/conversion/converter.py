@@ -1,5 +1,6 @@
+from .hbclis import HandBrakeClis
+
 from subprocess import call
-import os
 
 class Converter:
     """ Represents a Converter than can convert files using the HandBrakeCLI """
@@ -11,14 +12,10 @@ class Converter:
     def run(self, filenames):
         """ Run the Converter for the given filenames """
         for filename in filenames:
-            call(['./HandBrakeCLI.exe', '-i', filename, '-o', self.getOutput(filename)])
+            args = ['./HandBrakeCLI.exe', '-i', filename]
+            for cliArg in HandBrakeClis:
+                if cliArg.check(filename, self.config):
+                    args.extend(cliArg.build(filename, self.config))
+                    
+            call(args)
             
-    def getOutput(self, filename):
-        """ Return the proper output filename """
-        output = self.config.output
-        if output is None:
-            output = filename
-            output = self.config.output
-        elif os.path.isdir(output):
-            output = os.path.join(output, filename)
-        return output
