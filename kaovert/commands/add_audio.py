@@ -11,5 +11,5 @@ class AddAudio:
         
     def run(self, *, stream, config):
         """ Run the command """
-        config.audio[stream] = {}
+        config.audio.streams.append({'number':stream})
         config.save()
