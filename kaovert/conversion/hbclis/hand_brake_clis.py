@@ -8,10 +8,10 @@ class HandBrakeClis(Enum):
     OutputLocation = OutputLocation()
     StopAt = StopAt()
     
-    def check(self, *args, **kwargs):
+    def check(self, context):
         """ Check if this CLI arg should be used """
-        return self.value.check(*args, **kwargs)
+        return self.value.check(context)
     
-    def build(self, *args, **kwargs):
+    def build(self, context):
         """ Build this CLI arg """
-        return self.value.build(*args, **kwargs)
+        return self.value.build(context)

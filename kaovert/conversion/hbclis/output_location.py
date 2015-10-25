@@ -3,20 +3,20 @@ import os
 class OutputLocation:
     """ Represents the Output Location CLI parameter """
     
-    def check(self, filename, config):
+    def check(self, context):
         """ Return if this CLI should be used """
         return True
         
-    def build(self, filename, config):
+    def build(self, context):
         """ Return the string parameters to add to the command string """
-        output = self.getOutput(filename, config)
+        output = self.getOutput(context)
         return ["-o", output]
         
-    def getOutput(self, filename, config):
+    def getOutput(self, context):
         """ Return the proper output filename """
-        output = config.output
+        output = context.config.output
         if output is None:
-            output = filename
+            output = context.filename
         elif os.path.isdir(output):
-            output = os.path.join(output, filename)
+            output = os.path.join(output, context.filename)
         return output

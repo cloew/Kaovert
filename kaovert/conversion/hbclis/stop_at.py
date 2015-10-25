@@ -2,10 +2,10 @@
 class StopAt:
     """ Represents the Stop At CLI parameter """
     
-    def check(self, filename, config):
+    def check(self, context):
         """ Return if this CLI should be used """
-        return config.stopAt is not None
+        return context.config.stopAt is not None
         
-    def build(self, filename, config):
+    def build(self, context):
         """ Return the string parameters to add to the command string """
-        return ["--stop-at", config.stopAt]
+        return ["--stop-at", context.config.stopAt]
