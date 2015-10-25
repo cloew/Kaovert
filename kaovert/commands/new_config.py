@@ -1,8 +1,6 @@
 from ..config import ConversionConfig
 from kao_command.args import Arg, FlagArg
 
-import os
-
 class NewConfig:
     """ Represents a command to create a Conversion Config file """
     description = "Create Conversion Config file"
