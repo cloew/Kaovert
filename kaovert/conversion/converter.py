@@ -19,5 +19,6 @@ class Converter:
                 if cliArg.check(context):
                     args.extend(cliArg.build(context))
                     
+            print(" ".join(args))
             call(args)
             

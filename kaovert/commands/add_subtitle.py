@@ -9,9 +9,10 @@ class AddSubtitle:
     description = "Add a subtitle track to a config file"
     args = [Arg('track', action='store', help='Track # to add to the config (1 for the first stream, scan for Foreign Audio)'),
             ConversionConfigArg(),
-            FlagArg('-b', '--burn', action='store_true', help="Flag the track to be burned into the picture")]
+            FlagArg('-b', '--burn', action='store_true', help="Flag the track to be burned into the picture"),
+            FlagArg('-f', '--forced', action='store_true', help="Flag the track to be forced")]
         
-    def run(self, *, track, config, burn):
+    def run(self, *, track, config, burn, forced):
         """ Run the command """
         if track == 'all':
             config.subtitle.includeAll = True
@@ -23,5 +24,7 @@ class AddSubtitle:
                 
             if burn:
                 subtitleTrack.burn = True
+            if forced:
+                subtitleTrack.forced = True
                 
         config.save()

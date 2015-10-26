@@ -11,4 +11,4 @@ class ListSubtitleTracks:
         mkv = MkvWrapper.open(filename)
             
         for i, track in enumerate(mkv.subtitle_tracks):
-            print("{0}: {1}".format(i+1, track.language))
+            print("{0}: {1}, default={2}, forced={3}".format(i+1, track.language, track.default, track.forced))
