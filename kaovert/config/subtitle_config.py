@@ -1,13 +1,12 @@
-from .toml_attrs import toml_attrs, toml_lists
-from .flex import FlexAttr
+from .flex import FlexAttr, WrappedAttr
 
 from kao_decorators import lazy_property
 from kao_dict import KaoDict
 
-@toml_lists('tracks')
 class SubtitleConfig(KaoDict):
     """ Represents the Subtitle Configuration """
     includeAll = FlexAttr('includeAll')
+    tracks = WrappedAttr('tracks', list)
     
     @lazy_property
     def tracksById(self):

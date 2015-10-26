@@ -1,8 +1,7 @@
-from .toml_attrs import toml_attrs, toml_lists
-from .flex import FlexAttr
+from .flex import FlexAttr, WrappedAttr
 from kao_dict import KaoDict
 
-@toml_lists('streams')
 class AudioConfig(KaoDict):
     """ Represents the Audio Config for a Conversion Configuration """
     includeAll = FlexAttr('includeAll')
+    streams = WrappedAttr('streams', list)

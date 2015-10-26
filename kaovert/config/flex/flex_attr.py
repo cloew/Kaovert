@@ -1,19 +1,13 @@
 from .get_data import getdata
+from .kao_descriptor import KaoDescriptor
 
-class FlexAttr:
+class FlexAttr(KaoDescriptor):
     """ Descriptor for an Attr that may exist in an underlying data store or not """
     
     def __init__(self, attr, data=None):
         """ Initialize with the attribute and the data container attr """
         self.attr = attr
         self.data = data
-    
-    def __get__(self, obj, type=None):
-        """ Get the proper value for the attribute """
-        if type is None:
-            return self
-        else:
-            return self.__getvalue__(obj)
             
     def __getvalue__(self, obj):
         """ Return the attr value """
