@@ -21,17 +21,17 @@ class Subtitles:
                 if track.burn:
                     burnIndex = index
                 if track.default:
-                    defaultIndex = index
+                    defaultIndex = track.id
                 if track.forced:
                     forcedTracks.append(str(index))
             
         params = ["-s", ",".join(trackIds)]
         if burnIndex is not None:
-            params.extend(['--subtitle-burn', str(burnIndex)])
+            params.extend(['--subtitle-burn={0}'.format(str(burnIndex))])
         if defaultIndex is not None:
-            params.extend(['--subtitle-default', str(defaultIndex)])
+            params.extend(['--subtitle-default={0}'.format(str(defaultIndex))])
         if len(forcedTracks) > 0:
-            params.extend(['--subtitle-forced', ",".join(forcedTracks)])
+            params.extend(['--subtitle-forced={0}'.format(",".join(forcedTracks))])
         return params
         
     def getTrackIds(self, context):
