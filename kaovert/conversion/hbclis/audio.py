@@ -8,5 +8,9 @@ class Audio:
         
     def build(self, context):
         """ Return the string parameters to add to the command string """
-        streams = [stream.number for stream in context.config.audio.streams]
+        audio = context.config.audio
+        if audio.includeAll:
+            streams = [str(i+1) for i, stream in enumerate(context.mkv.audio_tracks)]
+        else:
+            streams = [str(stream.number) for stream in context.config.audio.streams]
         return ["-a", ",".join(streams)]

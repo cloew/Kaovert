@@ -24,6 +24,9 @@ class PropertyAdder:
                     tomlDict = gettoml(self, toml)
                     if attr not in tomlDict:
                         setattr(tomlDict, attr, default())
+                    value = tomlDict[attr]
+                    if type(value) is not default:
+                        setattr(tomlDict, attr, default(value))
                     return tomlDict[attr]
             setattr(cls, attr, property(getter, setter))
         
@@ -47,5 +50,5 @@ def toml_config(*attrs, toml=None, config=None):
     
 def toml_lists(*attrs, toml=None):
     """ Add properties for the attributes from the Toml File that should be lists """
-    propsAdder = PropertyAdder(attrs, toml, default=lambda: [])
+    propsAdder = PropertyAdder(attrs, toml, default=list)
     return propsAdder.add
