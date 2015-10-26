@@ -12,6 +12,7 @@ class Subtitles:
         trackIds = self.getTrackIds(context)
         
         burnIndex = None
+        defaultIndex = None
         forcedTracks = []
         for i, trackId in enumerate(trackIds):
             index = i+1
@@ -19,12 +20,16 @@ class Subtitles:
                 track = subtitle.tracksById[trackId]
                 if track.burn:
                     burnIndex = index
+                if track.default:
+                    defaultIndex = index
                 if track.forced:
                     forcedTracks.append(str(index))
             
         params = ["-s", ",".join(trackIds)]
         if burnIndex is not None:
             params.extend(['--subtitle-burn', str(burnIndex)])
+        if defaultIndex is not None:
+            params.extend(['--subtitle-default', str(defaultIndex)])
         if len(forcedTracks) > 0:
             params.extend(['--subtitle-forced', ",".join(forcedTracks)])
         return params
