@@ -1,8 +1,8 @@
 from ..args import ConversionConfigArg
+from ..config import SubtitleTrackConfig
 from ..conversion import Converter
 
 from kao_command.args import Arg, FlagArg
-from kao_dict import KaoDict
 
 class AddSubtitle:
     """ Represents a command to create a Conversion Config file """
@@ -18,7 +18,7 @@ class AddSubtitle:
         else:
             subtitleTrack = config.subtitle.find(track)
             if not subtitleTrack:
-                subtitleTrack = KaoDict({'track':track})
+                subtitleTrack = SubtitleTrackConfig({'track':track})
                 config.subtitle.tracks.append(subtitleTrack)
                 
             if burn:
