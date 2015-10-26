@@ -6,7 +6,7 @@ from kao_decorators import lazy_property, proxy_for
 from kao_toml import KaoToml
 
 @proxy_for('_toml', ['save'])
-@toml_attrs('output', 'stopAt', toml='_toml')
+@toml_attrs('output', 'startAt', 'stopAt', toml='_toml')
 @toml_config('audio', config=AudioConfig, toml='_toml')
 @toml_config('subtitle', config=SubtitleConfig, toml='_toml')
 class ConversionConfig:
