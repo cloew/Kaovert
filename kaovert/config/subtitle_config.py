@@ -5,3 +5,11 @@ from kao_dict import KaoDict
 @toml_lists('tracks')
 class SubtitleConfig(KaoDict):
     """ Represents the Subtitle Configuration """
+    
+    def find(self, trackToFind):
+        """ Find the Subtitle that matches the given track """
+        for track in self.tracks:
+            if track.track == trackToFind:
+                return track
+        else:
+            None
