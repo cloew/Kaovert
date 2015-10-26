@@ -21,7 +21,7 @@ class Subtitles:
                 if track.burn:
                     burnIndex = index
                 if track.default:
-                    defaultIndex = track.id
+                    defaultIndex = index
                 if track.forced:
                     forcedTracks.append(str(index))
             
