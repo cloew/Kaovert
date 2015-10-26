@@ -18,7 +18,7 @@ class AddSubtitle:
         else:
             subtitleTrack = config.subtitle.find(track)
             if not subtitleTrack:
-                subtitleTrack = SubtitleTrackConfig({'track':track})
+                subtitleTrack = SubtitleTrackConfig(id=track)
                 config.subtitle.tracks.append(subtitleTrack)
                 
             if burn:

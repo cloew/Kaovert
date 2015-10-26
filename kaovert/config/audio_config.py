@@ -1,7 +1,6 @@
-from .flex import FlexAttr, WrappedAttr
-from kao_dict import KaoDict
+from .flex import Config, FlexAttr, WrappedAttr
 
-class AudioConfig(KaoDict):
+class AudioConfig(Config):
     """ Represents the Audio Config for a Conversion Configuration """
     includeAll = FlexAttr('includeAll')
     streams = WrappedAttr('streams', list)

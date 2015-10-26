@@ -1,7 +1,6 @@
-from .flex import FlexAttr
-from kao_dict import KaoDict
+from .flex import Config, FlexAttr
 
-class SubtitleTrackConfig(KaoDict):
+class SubtitleTrackConfig(Config):
     """ Represents a Subtitle Track Configuration """
     id = FlexAttr('track')
     burn = FlexAttr('burn')

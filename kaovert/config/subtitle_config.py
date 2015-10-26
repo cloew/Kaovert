@@ -1,10 +1,9 @@
 from .subtitle_track_config import SubtitleTrackConfig
-from .flex import FlexAttr, WrappedAttr, WrapperList
+from .flex import Config, FlexAttr, WrappedAttr, WrapperList
 
 from kao_decorators import lazy_property
-from kao_dict import KaoDict
 
-class SubtitleConfig(KaoDict):
+class SubtitleConfig(Config):
     """ Represents the Subtitle Configuration """
     includeAll = FlexAttr('includeAll')
     tracks = WrappedAttr('tracks', WrapperList, kwargs={'wrapperCls':SubtitleTrackConfig})
