@@ -3,12 +3,14 @@ from enum import Enum
 from .audio import Audio
 from .output_location import OutputLocation
 from .stop_at import StopAt
+from .subtitles import Subtitles
 
 class HandBrakeClis(Enum):
     """ Represents the various potential command line arguments """
     Audio = Audio()
     OutputLocation = OutputLocation()
     StopAt = StopAt()
+    Subtitles = Subtitles()
     
     def check(self, context):
         """ Check if this CLI arg should be used """
