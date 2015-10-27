@@ -2,7 +2,9 @@ from .conversion_args import ConversionArgs
 from .conversion_context import ConversionContext
 from .hbclis import HandBrakeClis
 
+from glob import glob
 from subprocess import call
+import os
 
 class Converter:
     """ Represents a Converter than can convert files using the HandBrakeCLI """
@@ -11,8 +13,10 @@ class Converter:
         """ Initialize with the config """
         self.config = config
         
-    def run(self, filenames):
+    def run(self, paths):
         """ Run the Converter for the given filenames """
+        filenames = self.getFilenames(paths)
+        print(filenames)
         for i, filename in enumerate(filenames):
             conversionArgs = ConversionArgs(filename, i)
             context = ConversionContext(filename, self.config, conversionArgs)
@@ -24,3 +28,12 @@ class Converter:
                     
             call(cliArgs)
             
+    def getFilenames(self, paths):
+        """ Return the proper filenames """
+        filenames = []
+        for path in paths:
+            if os.path.isdir(path):
+                filenames.extend(glob(os.path.join(path, '*.mkv')))
+            else:
+                filenames.append(path)
+        return filenames
