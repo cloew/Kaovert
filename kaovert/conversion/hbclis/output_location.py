@@ -1,3 +1,4 @@
+from jinja2 import Template
 import os
 
 class OutputLocation:
@@ -15,8 +16,11 @@ class OutputLocation:
     def getOutput(self, context):
         """ Return the proper output filename """
         output = context.config.output
+            
         if output is None:
             output = context.filename
-        elif os.path.isdir(output):
-            output = os.path.join(output, context.filename)
+        else:
+            output = Template(output).render(**context.args)
+            if os.path.isdir(output):
+                output = os.path.join(output, context.filename)
         return output

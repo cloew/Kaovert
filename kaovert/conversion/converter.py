@@ -1,3 +1,4 @@
+from .conversion_args import ConversionArgs
 from .conversion_context import ConversionContext
 from .hbclis import HandBrakeClis
 
@@ -12,13 +13,14 @@ class Converter:
         
     def run(self, filenames):
         """ Run the Converter for the given filenames """
-        for filename in filenames:
-            args = ['./HandBrakeCLI.exe', '-i', filename]
-            context = ConversionContext(filename, self.config)
+        for i, filename in enumerate(filenames):
+            conversionArgs = ConversionArgs(filename, i)
+            context = ConversionContext(filename, self.config, conversionArgs)
+            
+            cliArgs = ['./HandBrakeCLI.exe', '-i', filename]
             for cliArg in HandBrakeClis:
                 if cliArg.check(context):
-                    args.extend(cliArg.build(context))
+                    cliArgs.extend(cliArg.build(context))
                     
-            print(" ".join(args))
-            call(args)
+            call(cliArgs)
             

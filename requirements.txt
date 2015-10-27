@@ -1,5 +1,6 @@
 enzyme==0.4.1
 pytoml==0.1.7
+jinja2==2.8.0
 git+git://github.com/cloew/KaoDecorators.git
 git+git://github.com/cloew/KaoModules.git
 git+git://github.com/cloew/KaoCommand.git
