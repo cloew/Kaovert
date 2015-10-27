@@ -1,6 +1,6 @@
 from .audio_config import AudioConfig
 from .subtitle_config import SubtitleConfig
-from .flex import FlexAttr, WrappedAttr
+from .flex import ConfigPath, FlexAttr, WrappedAttr
 
 from kao_decorators import lazy_property, proxy_for
 from kao_toml import KaoToml
@@ -8,7 +8,8 @@ from kao_toml import KaoToml
 @proxy_for('_toml', ['save'])
 class ConversionConfig:
     """ Represents a Conversion Configuration """
-    output = FlexAttr('output', data='_toml')
+    _output = FlexAttr('output', data='_toml')
+    output = ConfigPath('_output')
     startAt = FlexAttr('startAt', data='_toml')
     stopAt = FlexAttr('stopAt', data='_toml')
     audio = WrappedAttr('audio', AudioConfig, data='_toml')

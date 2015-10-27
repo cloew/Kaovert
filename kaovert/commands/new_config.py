@@ -15,7 +15,6 @@ class NewConfig:
         config = ConversionConfig(filename)
         
         if output is not None:
-            print('Setting output:', output)
             config.output = output
         config.save()
         
