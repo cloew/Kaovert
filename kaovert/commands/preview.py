@@ -1,4 +1,4 @@
-from ..args import ConversionConfigArg
+from ..args import ConversionConfigArg, InlineArgs
 from ..conversion import Converter
 
 from kao_command.args import Arg, FlagArg
@@ -9,11 +9,12 @@ class Preview:
     args = [Arg('filenames', action='store', nargs='+', help='Files to preview'),
             ConversionConfigArg(),
             FlagArg('-s', '--start', action='store', type=int, default=0, help="Specify the start time for the preview"),
-            FlagArg('-d', '--duration', action='store', type=int, default=30, help="Specify the duration to stop at")]
+            FlagArg('-d', '--duration', action='store', type=int, default=30, help="Specify the duration to stop at"),
+            InlineArgs()]
         
-    def run(self, *, filenames, config, start, duration):
+    def run(self, *, filenames, config, start, duration, args):
         """ Run the command """
         config.startAt = "duration:{0}".format(start)
         config.stopAt = "duration:{0}".format(duration)
         converter = Converter(config)
-        converter.run(filenames)
+        converter.run(filenames, **args)

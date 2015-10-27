@@ -13,12 +13,12 @@ class Converter:
         """ Initialize with the config """
         self.config = config
         
-    def run(self, paths):
+    def run(self, paths, **kwargs):
         """ Run the Converter for the given filenames """
         filenames = self.getFilenames(paths)
         print(filenames)
         for i, filename in enumerate(filenames):
-            conversionArgs = ConversionArgs(filename, i)
+            conversionArgs = ConversionArgs(filename, i, **kwargs)
             context = ConversionContext(filename, self.config, conversionArgs)
             
             cliArgs = ['./HandBrakeCLI.exe', '-i', filename]
