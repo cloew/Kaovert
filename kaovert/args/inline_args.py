@@ -10,6 +10,8 @@ class InlineArgs(FlagArg):
     def getValue(self, args):
         """ Return the value from the args """
         inlineArgs = FlagArg.getValue(self, args)
-        inlineArgs = [arg.split('=') for arg in inlineArgs]
-        return {arg[0]:arg[1] for arg in inlineArgs}
-        return ConversionConfig(filename)
+        if inlineArgs is None:
+            return {}
+        else:
+            inlineArgs = [arg.split('=') for arg in inlineArgs]
+            return {arg[0]:arg[1] for arg in inlineArgs}
