@@ -13,5 +13,4 @@ class HandbrakeRunner:
         
     def run(self):
         """ Run the command """
-        print(" ".join(self.args))
         call(self.args)
