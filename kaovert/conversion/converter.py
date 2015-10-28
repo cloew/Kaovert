@@ -1,9 +1,9 @@
 from .conversion_args import ConversionArgs
 from .conversion_context import ConversionContext
+from .handbrake_runner import HandbrakeRunner
 from .hbclis import HandBrakeClis
 
 from glob import glob
-from subprocess import call
 import os
 
 class Converter:
@@ -18,15 +18,17 @@ class Converter:
         filenames = self.getFilenames(paths)
         print(filenames)
         for i, filename in enumerate(filenames):
+            runner = HandbrakeRunner()
+            runner.addArgs(['-i', filename])
+            
             conversionArgs = ConversionArgs(filename, i, **kwargs)
             context = ConversionContext(filename, self.config, conversionArgs)
             
-            cliArgs = ['./HandBrakeCLI.exe', '-i', filename]
             for cliArg in HandBrakeClis:
                 if cliArg.check(context):
-                    cliArgs.extend(cliArg.build(context))
+                    runner.addArgs(cliArg.build(context))
                     
-            call(cliArgs)
+            runner.run()
             
     def getFilenames(self, paths):
         """ Return the proper filenames """
