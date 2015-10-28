@@ -10,6 +10,7 @@ class ConversionConfig:
     """ Represents a Conversion Configuration """
     _output = FlexAttr('output', data='_toml')
     output = ConfigPath('_output')
+    preset = FlexAttr('preset', data='_toml')
     startAt = FlexAttr('startAt', data='_toml')
     stopAt = FlexAttr('stopAt', data='_toml')
     audio = WrappedAttr('audio', AudioConfig, data='_toml')

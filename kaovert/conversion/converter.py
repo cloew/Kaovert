@@ -16,7 +16,7 @@ class Converter:
     def run(self, paths, **kwargs):
         """ Run the Converter for the given filenames """
         filenames = self.getFilenames(paths)
-        print(filenames)
+        
         for i, filename in enumerate(filenames):
             runner = HandbrakeRunner()
             runner.addArgs(['-i', filename])

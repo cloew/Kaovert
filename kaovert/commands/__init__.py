@@ -7,4 +7,5 @@ commands = Commands(__name__, {'audio':'list_audio_tracks.ListAudioTracks',
                                'presets':'list_presets.ListPresets',
                                'preview':'preview.Preview',
                                'add':{'audio':'add_audio.AddAudio',
-                                      'subtitle':'add_subtitle.AddSubtitle'}})
+                                      'subtitle':'add_subtitle.AddSubtitle'},
+                               'set':{'preset':'set_preset.SetPreset'}})

@@ -23,4 +23,5 @@ class OutputLocation:
             output = Template(output).render(**context.args)
             if os.path.isdir(output):
                 output = os.path.join(output, context.filename)
+        print(output)
         return output
