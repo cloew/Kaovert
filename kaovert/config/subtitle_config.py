@@ -1,6 +1,6 @@
 from .subtitle_track_config import SubtitleTrackConfig
-from .flex import Config, FlexAttr, WrappedAttr, WrapperList
 
+from flexconfig import Config, FlexAttr, WrappedAttr, WrapperList
 from kao_decorators import lazy_property
 
 class SubtitleConfig(Config):

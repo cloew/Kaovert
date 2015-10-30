@@ -13,7 +13,7 @@ except ImportError:
     kwargs = {}
 
 setup(name='kaovert',
-      version='0.1.0',
+      version='0.2.0',
       description="",
       author='Chris Loew',
       author_email='cloew123@gmail.com',
@@ -21,9 +21,14 @@ setup(name='kaovert',
                 'kaovert.args',
                 'kaovert.commands',
                 'kaovert.config',
-                'kaovert.config.flex',
                 'kaovert.conversion',
                 'kaovert.conversion.hbclis'],
       scripts=['kaovert/scripts/kaovert'],
+      install_requires = ['enzyme',
+                          'flexconfig',
+                          'jinja2',
+                          'kao_command',
+                          'kao_decorators',
+                          'kao_toml'],
       **kwargs
      )

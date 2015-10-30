@@ -1,4 +1,4 @@
-from .flex import Config, FlexAttr
+from flexconfig import Config, FlexAttr
 
 class SubtitleTrackConfig(Config):
     """ Represents a Subtitle Track Configuration """

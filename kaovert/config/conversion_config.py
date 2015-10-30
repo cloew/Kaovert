@@ -1,7 +1,7 @@
 from .audio_config import AudioConfig
 from .subtitle_config import SubtitleConfig
-from .flex import ConfigPath, FlexAttr, WrappedAttr
 
+from flexconfig import ConfigPath, FlexAttr, WrappedAttr
 from kao_decorators import lazy_property, proxy_for
 from kao_toml import KaoToml
 
