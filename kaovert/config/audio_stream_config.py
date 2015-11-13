@@ -5,3 +5,4 @@ class AudioStreamConfig(Config):
     number = FlexAttr('number')
     encoder = FlexAttr('encoder', default='copy')
     mixdown = FlexAttr('mixdown', default='')
+    drc = FlexAttr('drc', default='')
