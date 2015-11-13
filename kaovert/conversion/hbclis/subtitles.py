@@ -1,3 +1,4 @@
+from .list_arg import ListArg
 
 class Subtitles:
     """ Represents the subtitle CLI parameters """
@@ -13,7 +14,7 @@ class Subtitles:
         
         burnIndex = None
         defaultIndex = None
-        forcedTracks = []
+        forcedTracks = ListArg()
         for i, trackId in enumerate(trackIds):
             index = i+1
             if trackId in subtitle.tracksById:
@@ -25,13 +26,13 @@ class Subtitles:
                 if track.forced:
                     forcedTracks.append(str(index))
             
-        params = ["-s", ",".join(trackIds)]
+        params = ["-s", trackIds.build()]
         if burnIndex is not None:
             params.extend(['--subtitle-burn={0}'.format(str(burnIndex))])
         if defaultIndex is not None:
             params.extend(['--subtitle-default={0}'.format(str(defaultIndex))])
         if len(forcedTracks) > 0:
-            params.extend(['--subtitle-forced={0}'.format(",".join(forcedTracks))])
+            params.extend(['--subtitle-forced={0}'.format(forcedTracks.build())])
         return params
         
     def getTrackIds(self, context):
@@ -42,4 +43,4 @@ class Subtitles:
             trackIds.append('scan')
         else:
             trackIds = [str(track.id) for track in context.config.subtitle.tracks]
-        return trackIds
+        return ListArg(trackIds)

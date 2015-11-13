@@ -1,4 +1,5 @@
 from .audio_stream_accessor import AudioStreamAccessor
+from .list_arg import ListArg
 
 class Audio:
     """ Represents the audio CLI parameters """
@@ -13,12 +14,12 @@ class Audio:
         streamNumbers = self.getStreamNumbers(context)
         streamAccesor = AudioStreamAccessor(audio)
         
-        encoders = []
+        encoders = ListArg()
         for number in streamNumbers:
             stream = streamAccesor[number]
             encoders.append(stream.encoder)
         
-        return ["-a", ",".join(streamNumbers), '-E', ",".join(encoders)]
+        return ["-a", streamNumbers.build(), '-E', encoders.build()]
         
     def getStreamNumbers(self, context):
         """ Return the selected Audio Stream Numbers """
@@ -30,7 +31,7 @@ class Audio:
             streams.extend(extraStreams)
         else:
             streams = configuredStreams
-        return streams
+        return ListArg(streams)
         
     def getExtraStreams(self, streams, configuredStreams):
         """ Return the Streams that are added as extras to the Audio Config """
