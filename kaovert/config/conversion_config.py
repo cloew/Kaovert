@@ -1,5 +1,6 @@
 from .audio_config import AudioConfig
 from .subtitle_config import SubtitleConfig
+from .video_config import VideoConfig
 
 from flexconfig import ConfigPath, FlexAttr, WrappedAttr
 from kao_decorators import lazy_property, proxy_for
@@ -13,6 +14,7 @@ class ConversionConfig:
     preset = FlexAttr('preset', data='_toml')
     startAt = FlexAttr('startAt', data='_toml')
     stopAt = FlexAttr('stopAt', data='_toml')
+    video = WrappedAttr('video', VideoConfig, data='_toml')
     audio = WrappedAttr('audio', AudioConfig, data='_toml')
     subtitle = WrappedAttr('subtitle', SubtitleConfig, data='_toml')
     
