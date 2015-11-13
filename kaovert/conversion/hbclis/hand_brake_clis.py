@@ -6,6 +6,7 @@ from .preset import Preset
 from .start_at import StartAt
 from .stop_at import StopAt
 from .subtitles import Subtitles
+from .video import Video
 
 class HandBrakeClis(Enum):
     """ Represents the various potential command line arguments """
@@ -15,6 +16,7 @@ class HandBrakeClis(Enum):
     StartAt = StartAt()
     StopAt = StopAt()
     Subtitles = Subtitles()
+    Video = Video()
     
     def check(self, context):
         """ Check if this CLI arg should be used """
