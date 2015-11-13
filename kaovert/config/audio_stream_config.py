@@ -6,4 +6,4 @@ class AudioStreamConfig(Config):
     encoder = FlexAttr('encoder', default='copy')
     mixdown = FlexAttr('mixdown', default='')
     drc = FlexAttr('drc', default='0')
-    gain = FlexAttr('gain', default='')
+    gain = FlexAttr('gain', default='0')

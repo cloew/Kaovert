@@ -17,13 +17,15 @@ class Audio:
         encoders = ListArg()
         mixdown = ListArg()
         drc = ListArg()
+        gain = ListArg()
         for number in streamNumbers:
             stream = streamAccesor[number]
             encoders.append(stream.encoder)
             mixdown.append(stream.mixdown)
             drc.append(stream.drc)
+            gain.append(stream.gain)
         
-        return ["-a", streamNumbers.build(), '-E', encoders.build(), '-6', mixdown.build(), '-D', drc.build()]
+        return ["-a", streamNumbers.build(), '-E', encoders.build(), '-6', mixdown.build(), '-D', drc.build(), '--gain', gain.build()]
         
     def getStreamNumbers(self, context):
         """ Return the selected Audio Stream Numbers """
