@@ -13,4 +13,6 @@ class Video:
         params = ["-e", video.encoder]
         if video.preset is not None:
             params.extend(['--encoder-preset', video.preset])
+        if video.tune is not None:
+            params.extend(['--encoder-tune', video.tune])
         return params
