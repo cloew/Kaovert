@@ -1,4 +1,5 @@
-from kaovert.config.audio_stream_config import AudioStreamConfig
+from kaovert.config import AudioStreamConfig
+
 class AudioStreamAccessor:
     """ Helper class to facilitate accessing the proper stream config """
     
