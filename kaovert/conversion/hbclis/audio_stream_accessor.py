@@ -12,6 +12,7 @@ class AudioStreamAccessor:
         """ Return the stream config for the requested number """
         if number in self.audio.streamsByNumber:
             index = self.getStreamIndex(number)
+            self.timesRequested[number] += 1
             return self.audio.streamsByNumber[number][index]
         else:
             return AudioStreamConfig(number=number)
