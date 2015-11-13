@@ -9,4 +9,8 @@ class Video:
     def build(self, context):
         """ Return the string parameters to add to the command string """
         video = context.config.video
-        return ["-e", video.encoder]
+        
+        params = ["-e", video.encoder]
+        if video.preset is not None:
+            params.extend(['--encoder-preset', video.preset])
+        return params
