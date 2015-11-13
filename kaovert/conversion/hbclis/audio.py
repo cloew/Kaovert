@@ -1,3 +1,4 @@
+from .audio_stream_accessor import AudioStreamAccessor
 
 class Audio:
     """ Represents the audio CLI parameters """
@@ -10,8 +11,14 @@ class Audio:
         """ Return the string parameters to add to the command string """
         audio = context.config.audio
         streamNumbers = self.getStreamNumbers(context)
+        streamAccesor = AudioStreamAccessor(audio)
         
-        return ["-a", ",".join(streamNumbers)]
+        encoders = []
+        for number in streamNumbers:
+            stream = streamAccesor[number]
+            encoders.append(stream.encoder)
+        
+        return ["-a", ",".join(streamNumbers), '-E', ",".join(encoders)]
         
     def getStreamNumbers(self, context):
         """ Return the selected Audio Stream Numbers """

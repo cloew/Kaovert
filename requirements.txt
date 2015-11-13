@@ -7,4 +7,5 @@ git+git://github.com/cloew/KaoModules.git
 git+git://github.com/cloew/KaoCommand.git
 git+git://github.com/cloew/KaoDict.git
 git+git://github.com/cloew/KaoToml.git
+git+git://github.com/cloew/KaoListDict.git
 wheel==0.24.0

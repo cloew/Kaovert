@@ -29,6 +29,7 @@ setup(name='kaovert',
                           'jinja2',
                           'kao_command',
                           'kao_decorators',
-                          'kao_toml'],
+                          'kao_toml',
+                          'kao_listdict'],
       **kwargs
      )
