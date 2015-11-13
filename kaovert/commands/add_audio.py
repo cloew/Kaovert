@@ -9,9 +9,10 @@ class AddAudio:
     description = "Add a audio stream to a config file"
     args = [Arg('stream', action='store', help='Stream # to add to the config (1 for the first stream)'),
             ConversionConfigArg(),
-            FlagArg('-e', '--encoder', action='store', help="The encoder to use for the Audio Stream")]
+            FlagArg('-e', '--encoder', action='store', help="The encoder to use for the Audio Stream"),
+            FlagArg('-m', '--mixdown', action='store', help="The mixdown format to use for the Audio Stream")]
         
-    def run(self, *, stream, config, encoder):
+    def run(self, *, stream, config, encoder, mixdown):
         """ Run the command """
         if stream == 'all':
             config.audio.includeAll = True
@@ -21,4 +22,6 @@ class AddAudio:
             
             if encoder:
                 audioStream.encoder = encoder
+            if mixdown:
+                audioStream.mixdown = mixdown
         config.save()
