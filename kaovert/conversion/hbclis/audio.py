@@ -9,8 +9,26 @@ class Audio:
     def build(self, context):
         """ Return the string parameters to add to the command string """
         audio = context.config.audio
+        streamNumbers = self.getStreamNumbers(context)
+        
+        return ["-a", ",".join(streamNumbers)]
+        
+    def getStreamNumbers(self, context):
+        """ Return the selected Audio Stream Numbers """
+        audio = context.config.audio
+        configuredStreams = [str(stream.number) for stream in audio.streams]
         if audio.includeAll:
             streams = [str(i+1) for i, stream in enumerate(context.mkv.audio_tracks)]
+            extraStreams = self.getExtraStreams(streams, configuredStreams)
+            streams.extend(extraStreams)
         else:
-            streams = [str(stream.number) for stream in context.config.audio.streams]
-        return ["-a", ",".join(streams)]
+            streams = configuredStreams
+        return streams
+        
+    def getExtraStreams(self, streams, configuredStreams):
+        """ Return the Streams that are added as extras to the Audio Config """
+        extraStreams = list(configuredStreams)
+        for number in streams:
+            if number in extraStreams:
+                extraStreams.remove(number)
+        return extraStreams
